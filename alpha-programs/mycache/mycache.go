@@ -18,26 +18,26 @@ const initialPageHtml = `
 </head>
 <body>
 <h1>Add</h1>
-<form action="/add" method="post">
+<form action="/mycache/add" method="post">
 Key: <input type="text" name="cache-key" /><br />
 Value: <input type="text" name="cache-value" /><br />
 <button type="submit">Add</button>
 </form>
 
 <h1>Get</h1>
-<form action="/get" method="get">
+<form action="/mycache/get" method="get">
 Key: <input type="text" name="cache-key" /><br />
 <button type="submit">Get</button>
 </form>
 
 <h1>Delete</h1>
-<form action="/delete" method="get">
+<form action="/mycache/delete" method="get">
 Key: <input type="text" name="cache-key" /><br />
 <button type="submit">Delete</button>
 </form>
 
 <h1>List</h1>
-<form action="/list" method="get">
+<form action="/mycache/list" method="get">
 <button type="submit">List</button>
 </form>
 
@@ -61,7 +61,7 @@ const addPageHtml = `
 <p>
 Added {{.CacheKey}} => {{.CacheValue}}
 </p>
-<a href="/">Go back home</a>
+<a href="/mycache">Go back home</a>
 </body>
 </html>
 `
@@ -74,7 +74,7 @@ const getPageHtml = `
 </head>
 <body>
 <p>{{.CacheKey}} => {{.CacheValue}}</p>
-<a href="/">Go back home</a>
+<a href="/mycache">Go back home</a>
 </body>
 </html>
 `
@@ -87,7 +87,7 @@ const deletePageHtml = `
 </head>
 <body>
 <p>Key {{.CacheKey}} is deleted.</p>
-<a href="/">Go back home</a>
+<a href="/mycache">Go back home</a>
 </body>
 </html>
 `
@@ -102,7 +102,7 @@ const listPageHtml = `
 {{range $key, $value := .Data}}
 <p>{{$key}} => {{$value}}</p>
 {{end}}
-<a href="/">Go back home</a>
+<a href="/mycache">Go back home</a>
 </body>
 </html>
 `
@@ -136,11 +136,11 @@ type listPage struct {
 }
 
 func init() {
-	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/add", addHandler)
-	http.HandleFunc("/get", getHandler)
-	http.HandleFunc("/delete", deleteHandler)
-	http.HandleFunc("/list", listHandler)
+	http.HandleFunc("/mycache", homeHandler)
+	http.HandleFunc("/mycache/add", addHandler)
+	http.HandleFunc("/mycache/get", getHandler)
+	http.HandleFunc("/mycache/delete", deleteHandler)
+	http.HandleFunc("/mycache/list", listHandler)
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
