@@ -18,7 +18,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 </head>
 <body>
 <p><a href="/mycache">My Cache</a></p>
-<p><a href="/lissajous">Lissajous</a></p>
+<p><a href="/lissajous/lissajous.gif">Lissajous</a></p>
 </body>
 </html>
 `)

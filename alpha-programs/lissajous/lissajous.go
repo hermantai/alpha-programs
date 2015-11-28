@@ -26,10 +26,11 @@ const (
 )
 
 func init() {
-	http.HandleFunc("/lissajous", homeHandler)
+	http.HandleFunc("/lissajous/lissajous.gif", homeHandler)
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "image/gif")
 	lissajous(w)
 }
 
